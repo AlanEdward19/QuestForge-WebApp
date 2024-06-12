@@ -1,0 +1,50 @@
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.attributes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.attribute-item {
+  padding: 5px;
+}
+
+.coins-grid {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.coin-item {
+  flex: 1;
+  text-align: center;
+  padding: 5px;
+}
+
+.character-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* alinha os itens no início da linha */
+  gap: 5px;
+}
+
+.example-card {
+  margin: 5px; /* adiciona margem ao redor dos cards */
+  max-width: 400px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.example-card:hover {
+  transform: scale(1.05);
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

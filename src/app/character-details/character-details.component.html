@@ -1,0 +1,64 @@
+<div class="container" *ngIf="character">
+  <div class="header">
+    <div class="header-image"></div>
+    <div>
+      <div class="header-title">{{ character['Basic Information'].name }}</div>
+      <div class="header-subtitle">
+        {{ character['Race Information'].name }} |
+        {{ character['Class Information'].name }} |
+        {{ character['Background Information'].name }} |
+        Nivel: {{ character['Level Information'].number }} |
+        {{ character['Level Information'].experiencePoints }} / {{ character['Level Information'].experiencePointsToNextLevel }}
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="main-section">
+      <div class="section">
+        <div class="attributes-grid">
+          <div class="attribute-item"><app-attribute-component title="Força" [bonus]="0" [value]="character['Basic Information'].abilityScores.Strength"></app-attribute-component></div>
+          <div class="attribute-item"><app-attribute-component title="Destreza" [bonus]="0" [value]="character['Basic Information'].abilityScores.Dexterity"></app-attribute-component></div>
+          <div class="attribute-item"><app-attribute-component title="Constituição" [bonus]="0" [value]="character['Basic Information'].abilityScores.Constitution"></app-attribute-component></div>
+          <div class="attribute-item"><app-attribute-component title="Inteligência" [bonus]="0" [value]="character['Basic Information'].abilityScores.Intelligence"></app-attribute-component></div>
+          <div class="attribute-item"><app-attribute-component title="Sabedoria" [bonus]="0" [value]="character['Basic Information'].abilityScores.Wisdom"></app-attribute-component></div>
+          <div class="attribute-item"><app-attribute-component title="Carisma" [bonus]="0" [value]="character['Basic Information'].abilityScores.Charisma"></app-attribute-component></div>
+        </div>
+      </div>
+
+      <div class="mat-divider"></div>
+
+      <div class="section">
+        <div class="coins-grid">
+          <div class="coin-item"><app-coin-icon title="Ouro" [value]="character['Basic Information'].coinPurse.gold"></app-coin-icon></div>
+          <div class="coin-item"><app-coin-icon title="Prata" [value]="character['Basic Information'].coinPurse.silver"></app-coin-icon></div>
+          <div class="coin-item"><app-coin-icon title="Cobre" [value]="character['Basic Information'].coinPurse.copper"></app-coin-icon></div>
+        </div>
+      </div>
+
+      <div class="mat-divider"></div>
+
+      <div class="section">
+        <div class="section-title">Carregamento</div>
+        <div class="load-grid">
+          <div class="load-item">Carregamento Máx: {{ character.maxLoadInKilograms }} kg</div>
+          <div class="load-item">Carregamento Atual: {{ character.currentLoadInKilograms }} kg</div>
+          <div class="load-item">Status de Carga: {{ character.loadStatus }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="section-title">Mochila</div>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Itens</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let item of character['Backpack Information'].items">
+          <mat-list-item>Item: {{ item.item.name }}</mat-list-item>
+          <mat-list-item>Quantidade: {{ item.quantity }}</mat-list-item>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </div>
+</div>

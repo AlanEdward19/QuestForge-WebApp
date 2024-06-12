@@ -1,0 +1,45 @@
+<div class="spinner-container" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="character-card" *ngIf="!loading">
+  <button mat-button (click)="onReloadClick()">Recarregar lista</button>
+  <div class="character-cards-container" *ngIf="characters">
+    <div *ngFor="let character of characters">
+      <mat-card class="example-card" (click)="onCardClick(character)">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ character['Basic Information'].name }}</mat-card-title>
+          <mat-card-subtitle>
+            {{ character['Race Information'].name }} |
+            {{ character['Class Information'].name }} |
+            {{ character['Background Information'].name }} |
+            Nivel: {{ character['Level Information'].number }} |
+            {{ character['Level Information'].experiencePoints }} / {{ character['Level Information'].experiencePointsToNextLevel }}
+          </mat-card-subtitle>
+
+        </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <mat-list>
+            <div align="center" mat-subheader>Atributos</div>
+            <div class="attributes-grid">
+              <div class="attribute-item">Força: {{ character['Basic Information'].abilityScores.Strength }}</div>
+              <div class="attribute-item">Destreza: {{ character['Basic Information'].abilityScores.Dexterity }}</div>
+              <div class="attribute-item">Constituição: {{ character['Basic Information'].abilityScores.Constitution }}</div>
+              <div class="attribute-item">Inteligência: {{ character['Basic Information'].abilityScores.Intelligence }}</div>
+              <div class="attribute-item">Sabedoria: {{ character['Basic Information'].abilityScores.Wisdom }}</div>
+              <div class="attribute-item">Carisma: {{ character['Basic Information'].abilityScores.Charisma }}</div>
+            </div>
+          </mat-list>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>Editar</button>
+          <button mat-button>Apagar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+  </div>
+</div>
